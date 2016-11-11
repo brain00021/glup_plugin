@@ -19,15 +19,15 @@ gulp.task('script', function() {
         .pipe(gulp.dest('dist')); // 指定最小化後的 JavaScript 檔案目錄
 });
 
+// gulp.task('styles', function () {
+//     gulp.src('sass/**/*.scss')    // 指定要處理的 Scss 檔案目錄
+//         .pipe(gulpSass())         // 編譯 Scss
+//         .pipe(gulp.dest('css'));  // 指定編譯後的 css 檔案目錄
+// });
+
+
 gulp.task('styles', function() {
-    // gulp.src('sass/**/*.scss') // 指定要處理的 Scss 檔案目錄
-    //     .pipe(gulpPlumber()) //判斷除錯
-    //     // .on('error', console.error.bind(console)) // 使用錯誤事件處理例外
-    //     .pipe(gulpSass({ // 編譯 Scss
-    //         outputStyle: 'compressed'
-    //     }))
-    //     .pipe(gulp.dest('css')); // 指定編譯後的 css 檔案目錄
-    gulp.src('resources/assets/sass/**/*.sass') // sass 來源路徑
+    gulp.src('sass/**/*.scss') // sass 來源路徑
     .pipe(gulpPlumber()) //判斷除錯
         .pipe(gulpCompass({
             css: 'css', // compass 輸出位置
