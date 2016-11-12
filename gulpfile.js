@@ -8,6 +8,7 @@ var gulp = require('gulp'), // 載入 gulp
     browserSync = require('browser-sync').create();
 // var notify = require("gulp-notify");
 var sassLint = require('gulp-sass-lint');//他說檢查錯誤 誰知道
+// var postcss      = require('gulp-postcss');
 
 
 
@@ -40,7 +41,8 @@ gulp.task('styles', function() {
         // }))
         .pipe(sourcemaps.init())
         .pipe(gulpSass({ outputStyle: 'expanded' }).on('error', gulpSass.logError))
-        .pipe(autoprefixer())
+        // .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({
