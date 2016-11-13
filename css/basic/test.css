@@ -1,4 +1,31 @@
-#test1 {
+#test1, #test2 {
   width: 100px;
+  border-radius: 50px;
   height: 100px;
-  width: 100px; }
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+  border: 1px solid #000;
+  border: 1px solid #000;
+}
+
+@-webkit-keyframes $animation-name {
+  0% {
+    width: 100px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@keyframes $animation-name {
+  0% {
+    width: 100px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+/*# sourceMappingURL=test.css.map */

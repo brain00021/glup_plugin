@@ -38,10 +38,10 @@ gulp.task('styles', function() {
     return gulp.src('sass/**/*.+(scss|sass)')
         .pipe(gulpPlumber())
         .pipe(sourcemaps.init())
-        .pipe(gulpSass({ outputStyle: 'compressed' }).on('error', gulpSass.logError))
+        .pipe(gulpSass({ outputStyle: 'expanded' }).on('error', gulpSass.logError))
         // .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
         // .pipe(autoprefixer({ browsers: ['> 5%, last 2 versions, ff 17, opera 12.1'] }))
-        .pipe(autoprefixer('last 2 versions'))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({
