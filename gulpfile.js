@@ -7,16 +7,12 @@ var gulp = require('gulp'), // 載入 gulp
     sourcemaps = require('gulp-sourcemaps'),
     gulpImagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync').create(),
-    gulpLivereload = require('gulp-livereload'),  // 載入 gulp-livereload
 	gulpNotify = require("gulp-notify");
-
 var sassLint = require('gulp-sass-lint');//他說檢查錯誤 
-// var postcss      = require('gulp-postcss');
 
 
 
 gulp.task('watch', function() {
-	gulpLivereload.listen();
     gulp.watch('js/*.js', ['scripts']);
     gulp.watch('sass/**/*.scss', ['styles']);
     gulp.watch("*.html").on('change', browserSync.reload);
@@ -25,10 +21,8 @@ gulp.task('watch', function() {
 gulp.task('script', function() {
     gulp.src('js/*.js') // 指定要處理的原始 JavaScript 檔案目錄
         .pipe(gulpPlumber()) //判斷除錯不要一直斷watch
-        // .on('error', console.error.bind(console)) // 使用錯誤事件處理例外
         .pipe(gulpUglify()) // 將 JavaScript 做最小化
-        .pipe(gulp.dest('dist')) // 指定最小化後的 JavaScript 檔案目錄
-        .pipe(gulpLivereload())                // 當檔案異動後自動重新載入頁面
+        .pipe(gulp.dest('build/js')) // 指定最小化後的 JavaScript 檔案目錄
         .pipe(gulpNotify("Minify JavaScript Finish"));
 });
 
@@ -37,19 +31,10 @@ gulp.task('image', function () {
         .pipe(gulpImagemin()) // 縮編
         .pipe(gulp.dest('images')); //匯出檔案
 });
-// 自我練習的task
-
-// gulp.task('styles', function () {
-//     gulp.src('sass/**/*.+(scss|sass)')    // 指定要處理的 Scss 檔案目錄
-//         .pipe(gulpSass())         // 編譯 Scss
-//         .pipe(autoprefixer())
-//         .pipe(gulp.dest('css'));  // 指定編譯後的 css 檔案目錄
-// });
-
 // 服務
-gulp.task('serve', ['sass'], function () {
+gulp.task('serve', ['styles'], function () {
     browserSync.init({
-        proxy: "kejyun.dev"   // hostname
+        server: "./build/"
     });
 });
 
@@ -59,16 +44,13 @@ gulp.task('styles', function() {
         .pipe(gulpPlumber())
         .pipe(sourcemaps.init())
         .pipe(gulpSass({ outputStyle: 'expanded' }).on('error', gulpSass.logError))
-        // .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
-        // .pipe(autoprefixer({ browsers: ['> 5%, last 2 versions, ff 17, opera 12.1'] }))
-        .pipe(autoprefixer({ browsers: ['> 5%','ie 6-8','Firefox <= 20'] }))
+        .pipe(autoprefixer({ browsers: ['> 5%','ie 6-8','Firefox <= 20'] })) //前智好
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('build/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
         .pipe(browserSync.stream()) //同步
-        .pipe(gulpLivereload());                // 當檔案異動後自動重新載入頁面
 });
 
 // compass task作法
@@ -88,4 +70,4 @@ gulp.task('styles', function() {
 //     // .pipe(gulp.dest('app/assets/temp')); // 輸出位置(非必要)
 // });
 
-gulp.task('default', ['script', 'styles', 'watch']);
+gulp.task('default', ['script', 'styles', 'watch','serve']);
