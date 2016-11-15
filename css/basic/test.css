@@ -1,16 +1,41 @@
 #test1, #test2 {
   width: 100px;
-  border-radius: 50px;
+  -moz-border-radius: 50px;
+       border-radius: 50px;
   height: 100px;
+  -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+       box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
   border: 1px solid #000;
   border: 1px solid #000;
+  border: 1px solid #000;
+  border: 1px solid #000;
+  border: 10px solid #000;
+  -moz-border-radius: 50%;
+       border-radius: 50%;
+  border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: translateX(45px);
+     -moz-transform: translateX(45px);
+          transform: translateX(45px);
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
 }
 
 @-webkit-keyframes $animation-name {
+  0% {
+    width: 100px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@-moz-keyframes $animation-name {
   0% {
     width: 100px;
   }
