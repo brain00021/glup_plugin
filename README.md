@@ -1,10 +1,10 @@
 ##MAC CDM ALL POINT & GULP TUTOURIAL
-*ls- list directory contents(目錄)
-*cd - change dirctory (更換目錄)
-*pwd  - print working directory (顯示在哪個目錄)
-*rm- remove（直接移除）
-*sudo-super user do (強制使用)
-*mdir-make diretory （製造目錄）
+* ls- list directory contents(目錄)
+* cd - change dirctory (更換目錄)
+* pwd  - print working directory (顯示在哪個目錄)
+* rm- remove（直接移除）
+* sudo-super user do (強制使用)
+* mdir-make diretory （製造目錄）
 
 ---
 
