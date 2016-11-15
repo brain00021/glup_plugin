@@ -1,10 +1,10 @@
-＃＃MAC CDM ALL POINT & GULP TUTOURIAL
-ls- list directory contents(目錄)
-cd - change dirctory (更換目錄)
-pwd  - print working directory (顯示在哪個目錄)
-rm- remove（直接移除）
-sudo-super user do (強制使用)
-mdir-make diretory （製造目錄）
+##MAC CDM ALL POINT & GULP TUTOURIAL
+*ls- list directory contents(目錄)
+*cd - change dirctory (更換目錄)
+*pwd  - print working directory (顯示在哪個目錄)
+*rm- remove（直接移除）
+*sudo-super user do (強制使用)
+*mdir-make diretory （製造目錄）
 
 ---
 
@@ -25,7 +25,9 @@ mdir-make diretory （製造目錄）
  先開專案 -> iterm2 Cd當下專案 ->`npm install gulp` -> `gulp watch`
 不然就是安裝 
 `npm install gulp` 其實是更快的方法
+
 ---
+
 ###檢查版本
 `gulp --version` 或 `npm -v`
 
