@@ -7,8 +7,8 @@ var gulp = require('gulp'), // 載入 gulp
     sourcemaps = require('gulp-sourcemaps'),
     gulpImagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync').create(),
-	gulpNotify = require("gulp-notify");
-var sassLint = require('gulp-sass-lint');//他說檢查錯誤 
+    gulpNotify = require("gulp-notify");
+var sassLint = require('gulp-sass-lint'); //他說檢查錯誤 
 
 
 
@@ -26,15 +26,16 @@ gulp.task('script', function() {
         .pipe(gulpNotify("Minify JavaScript Finish"));
 });
 
-gulp.task('image', function () {
+gulp.task('image', function() {
     gulp.src('images/original/**') //指定的路徑
         .pipe(gulpImagemin()) // 縮編
         .pipe(gulp.dest('images')); //匯出檔案
 });
 // 服務
-gulp.task('serve', ['styles'], function () {
+// Static Server + watching scss/html files
+gulp.task('server', function() {
     browserSync.init({
-        server: "./build/"
+        server: "./"
     });
 });
 
@@ -44,7 +45,7 @@ gulp.task('styles', function() {
         .pipe(gulpPlumber())
         .pipe(sourcemaps.init())
         .pipe(gulpSass({ outputStyle: 'expanded' }).on('error', gulpSass.logError))
-        .pipe(autoprefixer({ browsers: ['> 5%','ie 6-8','Firefox <= 20'] })) //前智好
+        .pipe(autoprefixer({ browsers: ['> 5%', 'ie 6-8', 'Firefox <= 20'] })) //前智好
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('build/css'))
         .pipe(browserSync.reload({
@@ -70,4 +71,4 @@ gulp.task('styles', function() {
 //     // .pipe(gulp.dest('app/assets/temp')); // 輸出位置(非必要)
 // });
 
-gulp.task('default', ['script', 'styles', 'watch','serve']);
+gulp.task('default', ['script', 'styles', 'watch', 'server']);
