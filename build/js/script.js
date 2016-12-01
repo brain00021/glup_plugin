@@ -1,0 +1,1 @@
+var http=require("http");http.createServer(function(e,t){t.writeHead(200,{"Content-Type":"text/plain"}),t.write("Hello fucking terry World"),t.end()}).listen(8888);

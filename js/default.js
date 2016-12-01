@@ -1,4 +1,2 @@
-$(function(){
-	alert("fuck");
-	console.log("it's final working now~yeah");
-});
+
+console.log("hello this is my sadnees word");
